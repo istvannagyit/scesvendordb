@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AjaxControlToolkit;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -73,30 +74,45 @@ namespace VendorDatabase
 
         }
 
-        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
 
+       public void VendorSelectedFunction(object sender, EventArgs e)
+       {
+           TextBox textboxVendor = (TextBox)sender;
+           try
+           {
+               DataSet ds = new DataSet();
+               string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
+               SqlConnection con = new SqlConnection(constr);
+               con.Open();
+               SqlCommand cmd = new SqlCommand("SELECT vendor_id, vendor_name, "
+                   + "vendor_address1, vendor_address2, vendor_city, vendor_state, vendor_postalcode, vendor_phone1, "
+                   + "vendor_phone2, vendor_fax, vendor_email, vendor_note, active FROM Vendor WHERE (active = '1') AND vendor_name = @Vendor", con); //WHERE ([active] = '1') AND vendor_name like @Vendor+'%'
+               cmd.Parameters.AddWithValue("@Vendor", textboxVendor.Text);
+               SqlDataAdapter adp = new SqlDataAdapter(cmd);
+               adp.Fill(ds);
+               GridView mainContentGridView1 = (GridView)MainContent.FindControl("GridView1");
+               mainContentGridView1.DataSource = ds;
+               mainContentGridView1.DataBind();
 
-        public static string[] loadVendors(string prefixText, int count, string contextKey)
-        {
-            System.Data.DataTable dt = new System.Data.DataTable();
-            string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
-            System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(constr);
-            con.Open();
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("select vendor_name from Vendor where vendor_name like @Vendor+'%'", con);
-            cmd.Parameters.AddWithValue("@Vendor", prefixText);
-            System.Data.SqlClient.SqlDataAdapter adp = new System.Data.SqlClient.SqlDataAdapter(cmd);
-            adp.Fill(dt);
-            List<string> VendorNames = new List<string>();
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                VendorNames.Add(dt.Rows[i][0].ToString());
-            }
-
-
-            return VendorNames.ToArray();
-
-        }
-       
+           }
+           catch (System.Data.SqlClient.SqlException ex) //Catch SqlException
+           {
+               Response.Write("The database server is temporarily not operating, please reload the page in a bit." +
+               " If the problem seems permanent please let the Student center IT know.");
+               Response.Write(ex.Message);
+               //Response.Redirect("/App/ErrorPage.aspx");
+           }
+           catch (Exception ex) //Catch Other Exception
+           {
+               Response.Write(ex.Message);
+           }
+       }
+       public void SearchOnVendor(object sender, EventArgs e)
+       {
+          // Image textboxVendor = (Image)sender;
+           //SSSResponse.Write(textboxVendor.Text);
+       }
+        
+        
     }
 }

@@ -1,6 +1,43 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VendorDatabase.SiteMaster" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 <!DOCTYPE html>
+<style type="text/css">
+.AutoExtender
+{
+font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+font-size: .9em;
+font-weight: normal;
+border: solid 2px #c7d1d6;
+line-height: 20px;
+padding: 10px;
+background-color: White;
+margin-left:10px;
+}
+.AutoExtenderList
+{
+cursor: pointer;
+color: #a7aeb2;
+}
+.AutoExtenderHighlight
+{
+color: White;
+background-color: #e2e2e2;
+cursor: pointer;
+}
+#divwidth
+{
+width: 150px !important;
+}
+#divwidth div
+{
+width: 150px !important;
+}
+</style>
+<script type="text/javascript">
+    function VendorSelectedClientFunction(sender, args) {
+        __doPostBack(sender.get_element().name, "");
+    }
+</script>
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
@@ -29,15 +66,23 @@
                     <ul id="menu">
                         <li><a href="/">Vendors</a></li>
                         <li><a href="/CreateNew">Create New</a></li>&nbsp;&nbsp;
-                        <asp:TextBox ID="TextBox1" runat="server" Width="263px" >
-                        </asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="VendorSelectedFunction" Width="263px" >
+                        </asp:TextBox>&nbsp;<asp:Image ID="Image1" runat="server"  ImageUrl="~/Images/searchButton.gif" Height="19px" Width="20px" />
                    
                         <asp:AutoCompleteExtender 
                             ID="AutoCompleteExtender1" 
                             runat="server"
                             TargetControlID="TextBox1" 
                             UseContextKey="True"
-                            ServiceMethod="loadVendors">
+                            ServiceMethod="loadVendors"
+                            MinimumPrefixLength ="1" 
+                            EnableCaching="true"
+                            CompletionListCssClass="AutoExtender"
+                            CompletionListItemCssClass="AutoExtenderList" 
+                            OnClientItemSelected="VendorSelectedClientFunction"
+                            CompletionListHighlightedItemCssClass="AutoExtenderHighlight" 
+                            CompletionListElementID="divwidth">
+                            
                         </asp:AutoCompleteExtender>
                     </ul>
                 </nav>
