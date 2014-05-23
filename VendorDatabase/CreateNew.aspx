@@ -1,10 +1,21 @@
 ﻿<%@ Page Title="Create New" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateNew.aspx.cs" Inherits="VendorDatabase.Contact" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <hgroup class="title">
-        <h2>Create new vendor:</h2>
-    </hgroup>
-    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="294px" AllowPaging="True" AutoGenerateRows="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="vendor_id" DefaultMode="Insert" >
+    <style type="text/css">
+        .BackColorTab
+        {
+            font-family:Verdana, Arial, Courier New;
+            font-size: 11px;
+            color:#EFEEEF;
+            background-color:#EFEEEF;
+        }
+    </style>    
+
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" Height="548px" Width="1024px" VerticalStripWidth="" style="margin-right: 31px">
+        <ajaxToolkit:TabPanel runat="server" HeaderText="Create/Edit Vendor" ID="TabPanel1" CssClass="BackColorTab">
+            <ContentTemplate>
+    <h3 dir="ltr">
+    <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" AutoGenerateRows="False" CellPadding="1" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="vendor_id" DefaultMode="Insert" CellSpacing="1">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#C5BBAF" Font-Bold="True" />
         <EditRowStyle BackColor="#C6C0BA" />
@@ -65,7 +76,7 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("vendor_state") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Postalcode" SortExpression="vendor_postalcode">
+            <asp:TemplateField HeaderText="ZIP" SortExpression="vendor_postalcode">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("vendor_postalcode") %>'></asp:TextBox>
                 </EditItemTemplate>
@@ -150,10 +161,8 @@
         <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#E3EAEB" />
     </asp:DetailsView>
-    
-    <div>  
-        <br />
-    </div>
+    </h3>
+    <p dir="ltr"></p>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="vendor_id" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="5">
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" ShowDeleteButton="True" />
@@ -216,5 +225,102 @@
             <asp:Parameter Name="vendor_id" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    
+
+ <!-------------------------------->   
+ <!----SECOND TAB STARTS HERE------>   
+ <!-------------------------------->   
+
+            </ContentTemplate>  
+        </ajaxToolkit:TabPanel>
+        <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Create/Edit Vendor Contact" CssClass="BackColorTab">
+        <ContentTemplate>
+            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="vendor_name" DataValueField="vendor_id" OnSelectedIndexChanged="selectVendorForEdit" AutoPostBack="True"></asp:DropDownList>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:SCESPORTALConnectionString %>' SelectCommand="SELECT [vendor_name], [vendor_id] FROM [Vendor] ORDER BY vendor_name"></asp:SqlDataSource>
+            <p dir="ltr"></p>
+            <asp:DetailsView ID="DetailsView2" runat="server" Height="50px" Width="125px" AutoGenerateRows="False" DataSourceID="SqlDataSource3" AllowPaging="True" DefaultMode="Insert" CellPadding="1" CellSpacing="1" ForeColor="#333333" GridLines="None" OnItemInserted="DetailsView1_ItemInserted">
+                <AlternatingRowStyle BackColor="White" />
+                <CommandRowStyle BackColor="#C5BBAF" Font-Bold="True" />
+                <EditRowStyle BackColor="#C6C0BA" />
+                <FieldHeaderStyle BackColor="#D0D0D0" Font-Bold="True" />
+                <Fields>
+                    <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Mr/Ms/Mrs" SortExpression="vendor_contact_honorific"></asp:BoundField>
+                     <asp:BoundField DataField="vendor_contact_fname" HeaderText="First name" SortExpression="vendor_contact_fname"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_lname" HeaderText="Last name" SortExpression="vendor_contact_lname"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_position" HeaderText="Position" SortExpression="vendor_contact_position"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_address1" HeaderText="Address1" SortExpression="vendor_contact_address1"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_address2" HeaderText="Address2" SortExpression="vendor_contact_address2"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_city" HeaderText="City" SortExpression="vendor_contact_city"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_state" HeaderText="State" SortExpression="vendor_contact_state"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_postalcode" HeaderText="ZIP" SortExpression="vendor_contact_postalcode"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_phone1" HeaderText="Phone1" SortExpression="vendor_contact_phone1"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_phone2" HeaderText="Phone2" SortExpression="vendor_contact_phone2"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_fax" HeaderText="Fax" SortExpression="vendor_contact_fax"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_email" HeaderText="Email" SortExpression="vendor_contact_email"></asp:BoundField>
+                    <asp:BoundField DataField="vendor_contact_note" HeaderText="Note" SortExpression="vendor_contact_note"></asp:BoundField>
+                    <asp:BoundField DataField="active" HeaderText="active" SortExpression="active"></asp:BoundField>
+                    <asp:CommandField ShowInsertButton="True" />
+                </Fields>
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+            </asp:DetailsView>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource3" ConnectionString='<%$ ConnectionStrings:SCESPORTALConnectionString %>' SelectCommand="SELECT [vendor_id], [vendor_contact_id], [vendor_contact_fname], [vendor_contact_honorific], [vendor_contact_lname], [vendor_contact_position], [vendor_contact_address1], [vendor_contact_address2], [vendor_contact_city], [vendor_contact_state], [vendor_contact_postalcode], [vendor_contact_phone1], [vendor_contact_phone2], [vendor_contact_fax], [vendor_contact_email], [vendor_contact_note], [active] FROM [Vendor_Contact]" InsertCommand="INSERT INTO Vendor_Contact(vendor_id, vendor_contact_honorific, vendor_contact_fname, vendor_contact_lname, vendor_contact_position, vendor_contact_address1, vendor_contact_address2, vendor_contact_city, vendor_contact_state, vendor_contact_postalcode, vendor_contact_phone1, vendor_contact_phone2, vendor_contact_fax, vendor_contact_email, vendor_contact_note, active) VALUES (@vendor_id,@vendor_contact_honorific, @vendor_contact_fname, @vendor_contact_lname, @vendor_contact_position, @vendor_contact_address1, @vendor_contact_address2, @vendor_contact_city, @vendor_contact_state, @vendor_contact_postalcode, @vendor_contact_phone1, @vendor_contact_phone2, @vendor_contact_fax, @vendor_contact_email, @vendor_contact_note, @active)">
+                <InsertParameters>
+                    <asp:ControlParameter ControlID="DropDownList1" Name="vendor_id" PropertyName="SelectedValue" />
+                    <asp:Parameter Name="vendor_contact_id" Type="String" />
+                    <asp:Parameter Name="vendor_contact_fname" Type="String" />
+                    <asp:Parameter Name="vendor_contact_honorific" Type="String" />
+                    <asp:Parameter Name="vendor_contact_lname" Type="String" />
+                    <asp:Parameter Name="vendor_contact_city" Type="String" />
+                    <asp:Parameter Name="vendor_contact_state" Type="String" />
+                    <asp:Parameter Name="vendor_contact_phone1" Type="String" />
+                    <asp:Parameter Name="vendor_contact_email" Type="String" />
+                    <asp:Parameter Name="vendor_contact_address1" Type="String" />
+                    <asp:Parameter Name="vendor_contact_address2" Type="String" />
+                    <asp:Parameter Name="vendor_contact_postalcode" Type="String" />
+                    <asp:Parameter Name="vendor_contact_phone2" Type="String" />
+                    <asp:Parameter Name="vendor_contact_fax" Type="String" />
+                    <asp:Parameter Name="vendor_contact_note" Type="String" />
+                    <asp:Parameter Name="active" Type="Int32" />
+                </InsertParameters>
+            </asp:SqlDataSource>
+        <p dir="ltr"></p>
+            <asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="vendor_id" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="3" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                <Columns>
+                    <asp:CommandField ShowEditButton="True" />
+                    <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Honorific" SortExpression="vendor_contact_honorific" />
+                    <asp:BoundField DataField="vendor_contact_fname" HeaderText="First name" SortExpression="vendor_contact_fname" />
+                    <asp:BoundField DataField="vendor_contact_lname" HeaderText="Last name" SortExpression="vendor_contact_lname" />
+                    <asp:BoundField DataField="vendor_contact_position" HeaderText="Position" SortExpression="vendor_contact_position" />
+                    <asp:BoundField DataField="vendor_contact_address1" HeaderText="Address1" SortExpression="vendor_contact_address1" />
+                    <asp:BoundField DataField="vendor_contact_address2" HeaderText="Address2" SortExpression="vendor_contact_address2" />
+                    <asp:BoundField DataField="vendor_contact_city" HeaderText="City" SortExpression="vendor_contact_city" />
+                    <asp:BoundField DataField="vendor_contact_state" HeaderText="State" SortExpression="vendor_contact_state" />
+                    <asp:BoundField DataField="vendor_contact_postalcode" HeaderText="ZIP" SortExpression="vendor_contact_postalcode" />
+                    <asp:BoundField DataField="vendor_contact_phone1" HeaderText="Phone1" SortExpression="vendor_contact_phone1" />
+                    <asp:BoundField DataField="vendor_contact_phone2" HeaderText="Phone2" SortExpression="vendor_contact_phone2" />
+                    <asp:BoundField DataField="vendor_contact_fax" HeaderText="Fax" SortExpression="vendor_contact_fax" />
+                    <asp:BoundField DataField="vendor_contact_email" HeaderText="Email" SortExpression="vendor_contact_email" />
+                    <asp:BoundField DataField="vendor_contact_note" HeaderText="Note" SortExpression="vendor_contact_note" />
+                    <asp:BoundField DataField="active" HeaderText="active" SortExpression="active" />
+                </Columns>
+                <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+                <HeaderStyle BackColor="#999999" Font-Bold="True" ForeColor="#E7E7FF" />
+                <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Left" />
+                <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
+                <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#594B9C" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#33276A" />
+            </asp:GridView>
+
+                   
+
+         </ContentTemplate> 
+        </ajaxToolkit:TabPanel>
+    </ajaxToolkit:TabContainer>
+
 </asp:Content>

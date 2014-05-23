@@ -7,7 +7,7 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent" Height="500px">
     <h3 dir="ltr" class="auto-style1">
-        <asp:Button ID="Button1" runat="server" Text="A" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px"  />
+<asp:Button ID="Button1" runat="server" Text="A" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px"  />
 &nbsp;<asp:Button ID="Button3" runat="server" Text="B" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
 &nbsp;<asp:Button ID="Button4" runat="server" Text="C" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
 &nbsp;<asp:Button ID="Button5" runat="server" Text="D" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
@@ -33,19 +33,19 @@
 &nbsp;<asp:Button ID="Button25" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
 &nbsp;<asp:Button ID="Button26" runat="server" Text="Y"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
 &nbsp;<asp:Button ID="Button27" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button30" runat="server" Text="1" OnClick="showVendorsByInitials"  Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button31" runat="server" Text="2"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button32" runat="server" Text="3"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button33" runat="server" Text="4"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button34" runat="server" Text="5"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button35" runat="server" Text="6"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button36" runat="server" Text="7"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button37" runat="server" Text="8"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
-&nbsp;<asp:Button ID="Button38" runat="server" Text="9"  OnClick="showVendorsByInitials" Font-Underline="False" Width="17px" />
+&nbsp;<asp:Button ID="Button30" runat="server" Text="1" OnClick="showVendorsByInitials"  Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button31" runat="server" Text="2"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button32" runat="server" Text="3"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button33" runat="server" Text="4"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button34" runat="server" Text="5"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button35" runat="server" Text="6"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button36" runat="server" Text="7"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button37" runat="server" Text="8"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+&nbsp;<asp:Button ID="Button38" runat="server" Text="9"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
         </h3>
     <p>
        
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="vendor_id"  AllowSorting="True"  >
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="vendor_id"  AllowSorting="True" Width="980px"  >
             <Columns>
                 <asp:CommandField ButtonType="Button" SelectText="Details" ShowSelectButton="True" />
                 <asp:BoundField DataField="vendor_id" HeaderText="vendor_id" InsertVisible="False" ReadOnly="True" SortExpression="vendor_id" Visible="False" />
@@ -70,7 +70,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="980px">
             <Columns>
                 <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Mr/Ms/Mrs" SortExpression="vendor_contact_honorific" />
                 <asp:BoundField DataField="vendor_contact_fname" HeaderText="First Name" SortExpression="vendor_contact_fname" />

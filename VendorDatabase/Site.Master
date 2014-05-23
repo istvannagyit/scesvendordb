@@ -52,8 +52,7 @@ width: 150px !important;
 </head>
 <body>
     <form runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">  
-</asp:ToolkitScriptManager> 
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager> 
         
     <header>
         <div class="content-wrapper">
@@ -82,7 +81,6 @@ width: 150px !important;
                             OnClientItemSelected="VendorSelectedClientFunction"
                             CompletionListHighlightedItemCssClass="AutoExtenderHighlight" 
                             CompletionListElementID="divwidth">
-                            
                         </asp:AutoCompleteExtender>
                     </ul>
                 </nav>

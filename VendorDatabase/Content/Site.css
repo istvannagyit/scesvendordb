@@ -75,6 +75,7 @@ h2 {
 
 h3 {
     font-size: 1.2em;
+    width: 980px;
 }
 
 h4 {
@@ -495,14 +496,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .validation-summary-errors {
-    color: #e80c4d;
-    font-weight: bold;
-    font-size: 1.1em;
-}
 
-.validation-summary-valid {
-    display: none;
-}
 
 /* tables
 ----------------------------------------------------------*/
@@ -510,6 +504,13 @@ table {
     border-style: none;
     border-color: inherit;
     border-width: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 0.75em;
+    text-align: left;
+}
+
+er-width: 0;
     border-collapse: collapse;
     border-spacing: 0;
     margin-top: 0.75em;

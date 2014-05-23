@@ -33,8 +33,8 @@ namespace VendorDatabase
                  + "vendor_address1, vendor_address2, vendor_city, vendor_state, vendor_postalcode, vendor_phone1, "
                  + "vendor_phone2, vendor_fax, vendor_email, vendor_note, active FROM Vendor WHERE ([active] = '1') ORDER BY vendor_name", con);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                con.Close();
                 adp.Fill(ds);
-
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
             }
@@ -70,6 +70,7 @@ namespace VendorDatabase
                 + "vendor_phone2, vendor_fax, vendor_email, vendor_note, active FROM Vendor WHERE (active = '1') AND vendor_name like @Vendor+'%' ORDER BY vendor_name", con); //WHERE ([active] = '1') AND vendor_name like @Vendor+'%'
             cmd.Parameters.AddWithValue("@Vendor", NameInitial);
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            con.Close();
             adp.Fill(ds);
             GridView1.DataSource = ds;
             GridView1.DataBind();
@@ -97,6 +98,7 @@ namespace VendorDatabase
             SqlCommand cmd = new SqlCommand("select vendor_name from Vendor where vendor_name like '%'+@Vendor+'%'", con);
             cmd.Parameters.AddWithValue("@Vendor", prefixText);
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            con.Close();
             adp.Fill(dt);
             List<string> VendorNames = new List<string>();
             for (int i = 0; i < dt.Rows.Count; i++)
