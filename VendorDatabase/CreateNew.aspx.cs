@@ -125,5 +125,11 @@ namespace VendorDatabase
 
             selectVendorForEdit(DropDownList1, e);
         }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            selectVendorForEdit(DropDownList1, e);
+        }
       }
 }

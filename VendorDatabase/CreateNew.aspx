@@ -11,7 +11,7 @@
         }
     </style>    
 
-    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" Height="548px" Width="1024px" VerticalStripWidth="" style="margin-right: 31px">
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="548px" Width="1024px" VerticalStripWidth="" style="margin-right: 31px">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Create/Edit Vendor" ID="TabPanel1" CssClass="BackColorTab">
             <ContentTemplate>
     <h3 dir="ltr">
@@ -27,6 +27,8 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("vendor_name") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="" 
+                        ControlToValidate="TextBox1" Text="* Required" Display="Static" EnableClientScript="true" ></asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("vendor_name") %>'></asp:Label>
@@ -34,10 +36,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Address1" SortExpression="vendor_address1">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("vendor_address1") %>'></asp:TextBox>
-                </EditItemTemplate>
+                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("vendor_address1") %>'></asp:TextBox>                
+                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("vendor_address1") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage=""
+                        ControlToValidate="TextBox6" Text="* Required" Display="Static" EnableClientScript="true" ></asp:RequiredFieldValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("vendor_address1") %>'></asp:Label>
@@ -56,10 +60,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="City" SortExpression="vendor_city">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("vendor_city") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("vendor_city") %>'></asp:TextBox>                             
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("vendor_city") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage=""
+                        ControlToValidate="TextBox2" Text="* Required"  Display="Static" EnableClientScript="true" ></asp:RequiredFieldValidator>  
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("vendor_city") %>'></asp:Label>
@@ -67,10 +73,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="State" SortExpression="vendor_state">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("vendor_state") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("vendor_state") %>'></asp:TextBox>              
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("vendor_state") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("vendor_state") %>' MaxLength="2"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage=""
+                        ControlToValidate="TextBox3" Text="* Required"  Display="Static" EnableClientScript="true" ></asp:RequiredFieldValidator>  
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("vendor_state") %>'></asp:Label>
@@ -78,10 +86,18 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ZIP" SortExpression="vendor_postalcode">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("vendor_postalcode") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("vendor_postalcode") %>'></asp:TextBox>               
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("vendor_postalcode") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("vendor_postalcode") %>' ></asp:TextBox>
+                    <asp:RegularExpressionValidator id="RegularExpressionValidator118"
+                   ControlToValidate="TextBox8"
+                   ValidationExpression="\d+"
+                   Display="Static" EnableClientScript="true" 
+                   ErrorMessage="Only numbers are allowed"
+                   runat="server"/>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage=""
+                        ControlToValidate="TextBox8" Text="* Required"  Display="Static" EnableClientScript="true" ></asp:RequiredFieldValidator> 
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("vendor_postalcode") %>'></asp:Label>
@@ -115,6 +131,9 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("vendor_email") %>'></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                        ErrorMessage="" ControlToValidate="TextBox5" Display="Static" EnableClientScript="true"  
+                        Text="*" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("vendor_email") %>'></asp:Label>
@@ -140,17 +159,6 @@
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label11" runat="server" Text='<%# Bind("vendor_note") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Active" SortExpression="active">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("active") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("active") %>'></asp:TextBox>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label12" runat="server" Text='<%# Bind("active") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
              <asp:CommandField ShowInsertButton="True" />
@@ -191,7 +199,7 @@
     </asp:GridView>
     
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SCESPORTALConnectionString %>" SelectCommand="SELECT [vendor_name], [vendor_city], [vendor_state], [vendor_phone1], [vendor_email], [vendor_address1], [vendor_address2], [vendor_postalcode], [vendor_phone2], [vendor_fax], [vendor_note], [active], [vendor_id] FROM [Vendor]" DeleteCommand="DELETE FROM [Vendor] WHERE [vendor_id] = @vendor_id" InsertCommand="INSERT INTO [Vendor] ([vendor_name], [vendor_city], [vendor_state], [vendor_phone1], [vendor_email], [vendor_address1], [vendor_address2], [vendor_postalcode], [vendor_phone2], [vendor_fax], [vendor_note], [active]) VALUES (@vendor_name, @vendor_city, @vendor_state, @vendor_phone1, @vendor_email, @vendor_address1, @vendor_address2, @vendor_postalcode, @vendor_phone2, @vendor_fax, @vendor_note, @active)" UpdateCommand="UPDATE [Vendor] SET [vendor_name] = @vendor_name, [vendor_city] = @vendor_city, [vendor_state] = @vendor_state, [vendor_phone1] = @vendor_phone1, [vendor_email] = @vendor_email, [vendor_address1] = @vendor_address1, [vendor_address2] = @vendor_address2, [vendor_postalcode] = @vendor_postalcode, [vendor_phone2] = @vendor_phone2, [vendor_fax] = @vendor_fax, [vendor_note] = @vendor_note, [active] = @active WHERE [vendor_id] = @vendor_id">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SCESPORTALConnectionString %>" SelectCommand="SELECT [vendor_name], [vendor_city], [vendor_state], [vendor_phone1], [vendor_email], [vendor_address1], [vendor_address2], [vendor_postalcode], [vendor_phone2], [vendor_fax], [vendor_note], [active], [vendor_id] FROM [Vendor]" DeleteCommand="DELETE FROM [Vendor] WHERE [vendor_id] = @vendor_id" InsertCommand="INSERT INTO [Vendor] ([vendor_name], [vendor_city], [vendor_state], [vendor_phone1], [vendor_email], [vendor_address1], [vendor_address2], [vendor_postalcode], [vendor_phone2], [vendor_fax], [vendor_note], [active]) VALUES (@vendor_name, @vendor_city, @vendor_state, @vendor_phone1, @vendor_email, @vendor_address1, @vendor_address2, @vendor_postalcode, @vendor_phone2, @vendor_fax, @vendor_note, '1')" UpdateCommand="UPDATE [Vendor] SET [vendor_name] = @vendor_name, [vendor_city] = @vendor_city, [vendor_state] = @vendor_state, [vendor_phone1] = @vendor_phone1, [vendor_email] = @vendor_email, [vendor_address1] = @vendor_address1, [vendor_address2] = @vendor_address2, [vendor_postalcode] = @vendor_postalcode, [vendor_phone2] = @vendor_phone2, [vendor_fax] = @vendor_fax, [vendor_note] = @vendor_note, [active] = @active WHERE [vendor_id] = @vendor_id">
         <DeleteParameters>
             <asp:Parameter Name="vendor_id" Type="Int32" />
         </DeleteParameters>
@@ -226,9 +234,9 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
- <!-------------------------------->   
- <!----SECOND TAB STARTS HERE------>   
- <!-------------------------------->   
+ <!---------------------->   
+ <!---- SECOND TAB ------>   
+ <!---------------------->   
 
             </ContentTemplate>  
         </ajaxToolkit:TabPanel>
@@ -237,7 +245,7 @@
             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="vendor_name" DataValueField="vendor_id" OnSelectedIndexChanged="selectVendorForEdit" AutoPostBack="True"></asp:DropDownList>
             <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:SCESPORTALConnectionString %>' SelectCommand="SELECT [vendor_name], [vendor_id] FROM [Vendor] ORDER BY vendor_name"></asp:SqlDataSource>
             <p dir="ltr"></p>
-            <asp:DetailsView ID="DetailsView2" runat="server" Height="50px" Width="125px" AutoGenerateRows="False" DataSourceID="SqlDataSource3" AllowPaging="True" DefaultMode="Insert" CellPadding="1" CellSpacing="1" ForeColor="#333333" GridLines="None" OnItemInserted="DetailsView1_ItemInserted">
+            <asp:DetailsView ID="DetailsView2" runat="server" Height="50px" Width="110px" AutoGenerateRows="False" DataSourceID="SqlDataSource3" AllowPaging="True" DefaultMode="Insert" CellPadding="1" CellSpacing="1" ForeColor="#333333" GridLines="None" OnItemInserted="DetailsView1_ItemInserted">
                 <AlternatingRowStyle BackColor="White" />
                 <CommandRowStyle BackColor="#C5BBAF" Font-Bold="True" />
                 <EditRowStyle BackColor="#C6C0BA" />
@@ -287,7 +295,7 @@
                 </InsertParameters>
             </asp:SqlDataSource>
         <p dir="ltr"></p>
-            <asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="vendor_id" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="3" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+            <asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="vendor_id" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="3" OnPageIndexChanging="GridView2_PageIndexChanging">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
                     <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Honorific" SortExpression="vendor_contact_honorific" />
@@ -308,6 +316,7 @@
                 </Columns>
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                 <HeaderStyle BackColor="#999999" Font-Bold="True" ForeColor="#E7E7FF" />
+                <PagerSettings LastPageImageUrl="First" LastPageText="Last" Mode="NumericFirstLast" NextPageText="Next" PreviousPageText="Previous" />
                 <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Left" />
                 <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
                 <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
