@@ -119,7 +119,7 @@ namespace VendorDatabase
 
         }
 
-        protected void DetailsView1_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        protected void DetailsView2_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
         {
             // once a new record has been added, rebind the GridView so it appears there
 
@@ -130,6 +130,11 @@ namespace VendorDatabase
         {
             GridView2.PageIndex = e.NewPageIndex;
             selectVendorForEdit(DropDownList1, e);
+        }
+
+        protected void DetailsView1_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        {
+            GridView1.DataBind();
         }
       }
 }
