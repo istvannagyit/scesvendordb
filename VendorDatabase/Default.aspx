@@ -5,47 +5,47 @@
  
 </script>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent" Height="500px">
-    <h3 dir="ltr" class="auto-style1">
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent" Width="100%" Height="100%">
+    <p dir="auto" class="auto-style1">    
 <asp:Button ID="Button1" runat="server" Text="A" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px"  />
-&nbsp;<asp:Button ID="Button3" runat="server" Text="B" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button4" runat="server" Text="C" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button5" runat="server" Text="D" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button6" runat="server" Text="E"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button7" runat="server" Text="F"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button8" runat="server" Text="G"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button9" runat="server" Text="H"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button10" runat="server" Text="I"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button11" runat="server" Text="J"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button12" runat="server" Text="K"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button13" runat="server" Text="L"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button14" runat="server" Text="M" OnClick="showVendorsByInitials"  Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button15" runat="server" Text="N"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button16" runat="server" Text="O"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button17" runat="server" Text="P"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button18" runat="server" Text="Q"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button19" runat="server" Text="R"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button20" runat="server" Text="S" OnClick="showVendorsByInitials"  Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button21" runat="server" Text="T"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button22" runat="server" Text="U"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button23" runat="server" Text="V"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button24" runat="server" Text="W"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button25" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button26" runat="server" Text="Y"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button27" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
-&nbsp;<asp:Button ID="Button30" runat="server" Text="1" OnClick="showVendorsByInitials"  Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button31" runat="server" Text="2"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button32" runat="server" Text="3"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button33" runat="server" Text="4"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button34" runat="server" Text="5"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button35" runat="server" Text="6"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button36" runat="server" Text="7"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button37" runat="server" Text="8"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-&nbsp;<asp:Button ID="Button38" runat="server" Text="9"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
-        </h3>
+<asp:Button ID="Button3" runat="server" Text="B" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button4" runat="server" Text="C" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button5" runat="server" Text="D" OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button6" runat="server" Text="E"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button7" runat="server" Text="F"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button8" runat="server" Text="G"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button9" runat="server" Text="H"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button10" runat="server" Text="I"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button11" runat="server" Text="J"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button12" runat="server" Text="K"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button13" runat="server" Text="L"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button14" runat="server" Text="M" OnClick="showVendorsByInitials"  Font-Underline="False" Width="20px" />
+<asp:Button ID="Button15" runat="server" Text="N"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button16" runat="server" Text="O"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button17" runat="server" Text="P"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button18" runat="server" Text="Q"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button19" runat="server" Text="R"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button20" runat="server" Text="S" OnClick="showVendorsByInitials"  Font-Underline="False" Width="20px" />
+<asp:Button ID="Button21" runat="server" Text="T"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button22" runat="server" Text="U"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button23" runat="server" Text="V"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button24" runat="server" Text="W"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button25" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button26" runat="server" Text="Y"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button27" runat="server" Text="Z"  OnClick="showVendorsByInitials" Font-Underline="False" Width="20px" />
+<asp:Button ID="Button30" runat="server" Text="1" OnClick="showVendorsByInitials"  Font-Underline="False" Width="16px" />
+<asp:Button ID="Button31" runat="server" Text="2"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button32" runat="server" Text="3"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button33" runat="server" Text="4"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button34" runat="server" Text="5"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button35" runat="server" Text="6"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button36" runat="server" Text="7"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button37" runat="server" Text="8"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+<asp:Button ID="Button38" runat="server" Text="9"  OnClick="showVendorsByInitials" Font-Underline="False" Width="16px" />
+ </p>       
     <p>
        
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="vendor_id"  AllowSorting="True" Width="980px"  >
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="vendor_id"  AllowSorting="True" Width="100%" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound"  >
             <Columns>
                 <asp:CommandField ButtonType="Button" SelectText="Details" ShowSelectButton="True" />
                 <asp:BoundField DataField="vendor_id" HeaderText="vendor_id" InsertVisible="False" ReadOnly="True" SortExpression="vendor_id" Visible="False" />
@@ -62,6 +62,7 @@
                 <asp:BoundField DataField="vendor_note" HeaderText="Note" SortExpression="vendor_note" />
                 <asp:BoundField DataField="active" HeaderText="active" SortExpression="active" Visible="False" />
             </Columns>
+           <SelectedRowStyle BackColor="#999999" Font-Bold="True" ForeColor="White" />
             <PagerSettings Mode="NextPreviousFirstLast" />
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SCESPORTALConnectionString %>" SelectCommand="SELECT [vendor_id], [vendor_name], [vendor_address1], [vendor_address2], [vendor_city], [vendor_state], [vendor_postalcode], [vendor_phone1], [vendor_phone2], [vendor_fax], [vendor_email], [vendor_note], [active] FROM [Vendor] WHERE ([active] = @active)">
@@ -70,9 +71,9 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="980px">
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="100%" >
             <Columns>
-                <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Mr/Ms/Mrs" SortExpression="vendor_contact_honorific" />
+                <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Title" SortExpression="vendor_contact_honorific" />
                 <asp:BoundField DataField="vendor_contact_fname" HeaderText="First Name" SortExpression="vendor_contact_fname" />
                 <asp:BoundField DataField="vendor_contact_lname" HeaderText="Last Name" SortExpression="vendor_contact_lname" />
                 <asp:BoundField DataField="vendor_contact_position" HeaderText="Position" SortExpression="vendor_contact_position" />

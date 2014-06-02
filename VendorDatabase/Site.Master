@@ -7,11 +7,11 @@
 font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 font-size: .9em;
 font-weight: normal;
-border: solid 2px #c7d1d6;
+border: solid 1px #c7d1d6;
 line-height: 20px;
-padding: 10px;
+padding: 0px;
 background-color: White;
-margin-left:10px;
+margin-left:0px;
 }
 .AutoExtenderList
 {
@@ -26,11 +26,11 @@ cursor: pointer;
 }
 #divwidth
 {
-width: 150px !important;
+width: 140px !important;
 }
 #divwidth div
 {
-width: 150px !important;
+width: 140px !important;
 }
 </style>
 <script type="text/javascript">
@@ -65,7 +65,7 @@ width: 150px !important;
                     <ul id="menu">
                         <li><a href="/">Vendors</a></li>
                         <li><a href="/CreateNew">Create New</a></li>&nbsp;&nbsp;
-                        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="VendorSelectedFunction" Width="263px" >
+                        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="VendorSelectedFunction" Width="200px" >
                         </asp:TextBox>&nbsp;<asp:Image ID="Image1" runat="server"  ImageUrl="~/Images/searchButton.gif" Height="19px" Width="20px" />
                    
                         <asp:AutoCompleteExtender 
@@ -75,7 +75,7 @@ width: 150px !important;
                             UseContextKey="True"
                             ServiceMethod="loadVendors"
                             MinimumPrefixLength ="1" 
-                            EnableCaching="true"
+                            EnableCaching="false"
                             CompletionListCssClass="AutoExtender"
                             CompletionListItemCssClass="AutoExtenderList" 
                             OnClientItemSelected="VendorSelectedClientFunction"

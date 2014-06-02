@@ -78,11 +78,11 @@ namespace VendorDatabase
        public void VendorSelectedFunction(object sender, EventArgs e)
        {
            TextBox textboxVendor = (TextBox)sender;
+           string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
+           SqlConnection con = new SqlConnection(constr);
            try
            {
                DataSet ds = new DataSet();
-               string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
-               SqlConnection con = new SqlConnection(constr);
                con.Open();
                SqlCommand cmd = new SqlCommand("SELECT vendor_id, vendor_name, "
                    + "vendor_address1, vendor_address2, vendor_city, vendor_state, vendor_postalcode, vendor_phone1, "
@@ -104,7 +104,11 @@ namespace VendorDatabase
            }
            catch (Exception ex) //Catch Other Exception
            {
-               Response.Write(ex.Message);
+               Response.Write("VendorSelectedFunction " + ex.Message);
+           }
+           finally
+           {
+               con.Close();
            }
        }
        public void SearchOnVendor(object sender, EventArgs e)
@@ -114,5 +118,40 @@ namespace VendorDatabase
        }
         
         
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string[] loadVendors(string prefixText, int count, string contextKey)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(constr);
+            List<string> VendorNames = new List<string>();
+            try
+            {
+
+                DataTable dt = new DataTable();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select vendor_name from Vendor where vendor_name like '%'+@Vendor+'%'", con);
+                cmd.Parameters.AddWithValue("@Vendor", prefixText);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dt);
+               
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    VendorNames.Add(dt.Rows[i][0].ToString());
+                }
+                return VendorNames.ToArray();
+            }
+            catch (System.Data.SqlClient.SqlException ex) //Catch SqlException
+            {
+                return VendorNames.ToArray();
+            }
+            finally
+            {
+                con.Close();
+                
+            }
+        }
+
+
+
     }
 }
