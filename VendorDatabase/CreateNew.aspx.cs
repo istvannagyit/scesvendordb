@@ -152,10 +152,7 @@ namespace VendorDatabase
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
-        public void GridView2_DeleteItem(int id)
-        {
-
-        }
+        
 
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[] loadVendors(string prefixText, int count, string contextKey)
@@ -189,6 +186,22 @@ namespace VendorDatabase
 
             }
 
+        }
+
+        protected void TabPanel2_Load(object sender, EventArgs e)
+        {
+            Response.Write("TabPanel2_Load");
+
+        }
+
+        protected void TabPanel2_Init(object sender, EventArgs e)
+        {
+            Response.Write("TabPanel2_Init");
+        }
+
+        protected void TabPanel2_PreRender(object sender, EventArgs e)
+        {
+            Response.Write("TabPanel2_PreRender");
         }
     }
 }
