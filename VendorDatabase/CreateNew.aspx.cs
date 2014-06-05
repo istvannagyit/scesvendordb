@@ -23,20 +23,7 @@ namespace VendorDatabase
 
         }
 
-        protected void DetailsView1_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
-        {
-
-        }
-
-        protected void DetailsView1_PageIndexChanging1(object sender, DetailsViewPageEventArgs e)
-        {
-
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         protected void selectVendorForEdit(object sender, EventArgs e)
         {
@@ -111,20 +98,7 @@ namespace VendorDatabase
             }
         }
 
-        protected void DetailsView2_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void DetailsView2_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
         {
@@ -143,6 +117,7 @@ namespace VendorDatabase
         protected void DetailsView1_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
         {
             GridView1.DataBind();
+            DropDownList1.DataBind();
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
@@ -203,5 +178,124 @@ namespace VendorDatabase
         {
             Response.Write("TabPanel2_PreRender");
         }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            DropDownList1.DataBind();
+        }
+
+        protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+            DropDownList1.DataBind();
+        }
+
+        protected void GridView1_RowDataBound(object sender,
+                          GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton l = (LinkButton)e.Row.FindControl("LinkButton2");
+                l.Attributes.Add("onclick", "javascript:return " +
+                "confirm('Are you sure you want to delete the vendor " +
+                DataBinder.Eval(e.Row.DataItem, "vendor_name") +  "?')");
+            }
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int vendor_id = (int)GridView1.DataKeys[e.RowIndex].Value;
+            DeleteVendor_ByID(vendor_id);
+        }
+
+        protected void DeleteVendor_ByID(int vendor_id)
+        {
+
+            SqlConnection con;
+            string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
+            con = new SqlConnection(constr);
+
+            try
+            {
+                DataSet ds = new DataSet();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [Vendor] WHERE [vendor_id] = @vendor_id");
+                cmd.Parameters.AddWithValue("@vendor_contact_id", vendor_id);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+             
+                GridView1.DataBind();
+            }
+            catch (System.Data.SqlClient.SqlException ex) //Catch SqlException
+            {
+                Response.Write("The database server is temporarily not operating, please come back in a bit or" +
+                " if the problem seems permanent please let the Student center IT know.");
+                Response.Write(ex.Message);
+                //Response.Redirect("/App/ErrorPage.aspx");
+            }
+            catch (Exception ex) //Catch Other Exception
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        protected void GridView2_RowDataBound(object sender,
+                         GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton l = (LinkButton)e.Row.FindControl("LinkButton1");
+                l.Attributes.Add("onclick", "javascript:return " +
+                "confirm('Are you sure you want to delete the contact named " +
+                DataBinder.Eval(e.Row.DataItem, "vendor_contact_honorific") + " " 
+                + DataBinder.Eval(e.Row.DataItem, "vendor_contact_fname") + " " 
+                + DataBinder.Eval(e.Row.DataItem, "vendor_contact_lname") + "?')");
+            }
+        }
+
+        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int vendor_contact_id = (int)GridView2.DataKeys[e.RowIndex].Value;
+            DeleteVendor_contact_ByID(vendor_contact_id);
+        }
+
+        protected void DeleteVendor_contact_ByID(int vendor_contact_id)
+        {
+
+            SqlConnection con;
+            string constr = ConfigurationManager.ConnectionStrings["SCESPORTALConnectionString"].ToString();
+            con = new SqlConnection(constr);
+
+            try
+            {
+                DataSet ds = new DataSet();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [Vendor_Contact] WHERE [vendor_contact_id] = @vendor_contact_id");
+                cmd.Parameters.AddWithValue("@vendor_contact_id", vendor_contact_id);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+               // adp.Fill(ds);
+                //GridView2.DataSource = ds;
+                GridView2.DataBind();
+            }
+            catch (System.Data.SqlClient.SqlException ex) //Catch SqlException
+            {
+                Response.Write("The database server is temporarily not operating, please come back in a bit or" +
+                " if the problem seems permanent please let the Student center IT know.");
+                Response.Write(ex.Message);
+                //Response.Redirect("/App/ErrorPage.aspx");
+            }
+            catch (Exception ex) //Catch Other Exception
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
     }
 }

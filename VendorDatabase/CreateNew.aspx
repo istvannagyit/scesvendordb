@@ -179,9 +179,20 @@
     </asp:DetailsView>
     </p>
     <p dir="ltr"></p>
-                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="5" DataSourceID="SqlDataSource41" DataKeyNames="vendor_id">
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White"
+                     BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="5" DataSourceID="SqlDataSource41" 
+                    OnRowDataBound="GridView1_RowDataBound"  OnRowDeleting="GridView1_RowDeleting"
+                    DataKeyNames="vendor_id" OnRowDeleted="GridView1_RowDeleted" OnRowUpdated="GridView1_RowUpdated">
                     <Columns>
-                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ShowSelectButton="True" CausesValidation="False"></asp:CommandField>
+                        <asp:CommandField ShowEditButton="True" CausesValidation="False"></asp:CommandField>
+                        <asp:TemplateField HeaderText="Select">
+                         <ItemTemplate>
+                           <asp:LinkButton ID="LinkButton2" 
+                             CommandArgument='<%# Eval("vendor_id") %>' 
+                             CommandName="Delete" runat="server">
+                             Delete</asp:LinkButton>
+                         </ItemTemplate>
+                       </asp:TemplateField>
                         <asp:TemplateField HeaderText="Name" SortExpression="vendor_name">
                             <EditItemTemplate>
                                 <asp:TextBox runat="server" Text='<%# Bind("vendor_name") %>' ID="TextBox91"></asp:TextBox>
@@ -527,9 +538,20 @@
                 </InsertParameters>
             </asp:SqlDataSource>
         <p dir="ltr"></p>
-            <asp:GridView ID="GridView2" runat="server"  AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="vendor_contact_id" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" PageSize="3" DataSourceID="SqlDataSourceGridView2">
+            <asp:GridView ID="GridView2" runat="server"  AllowPaging="True" AllowSorting="True"  AutoGenerateColumns="False" 
+                DataKeyNames="vendor_contact_id" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" 
+                OnRowDataBound="GridView2_RowDataBound"  OnRowDeleting="GridView2_RowDeleting"
+                GridLines="None" PageSize="3" DataSourceID="SqlDataSourceGridView2">
                 <Columns>
-                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True"></asp:CommandField>
+                    <asp:CommandField ShowEditButton="True"  ></asp:CommandField>
+                    <asp:TemplateField HeaderText="Select">
+                         <ItemTemplate>
+                           <asp:LinkButton ID="LinkButton1" 
+                             CommandArgument='<%# Eval("vendor_contact_id") %>' 
+                             CommandName="Delete" runat="server">
+                             Delete</asp:LinkButton>
+                         </ItemTemplate>
+                       </asp:TemplateField>
                     <asp:BoundField DataField="vendor_contact_honorific" HeaderText="Title" SortExpression="vendor_contact_honorific"></asp:BoundField>
 
                     <asp:BoundField DataField="vendor_contact_fname" HeaderText="First name" SortExpression="vendor_contact_fname" />
@@ -545,7 +567,7 @@
                     <asp:BoundField DataField="vendor_contact_fax" HeaderText="Fax" SortExpression="vendor_contact_fax" />
                     <asp:BoundField DataField="vendor_contact_email" HeaderText="Email" SortExpression="vendor_contact_email" />
                     <asp:BoundField DataField="vendor_contact_note" HeaderText="Note" SortExpression="vendor_contact_note" />
-                    <asp:BoundField DataField="active" HeaderText="active" SortExpression="Active" />
+                    <asp:BoundField DataField="active" HeaderText="Active" SortExpression="Active" />
                 </Columns>
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                 <HeaderStyle BackColor="#999999" Font-Bold="True" ForeColor="#E7E7FF" />
@@ -559,8 +581,7 @@
                 <SortedDescendingHeaderStyle BackColor="#33276A" />
             </asp:GridView>
 
-
-
+           
             <asp:SqlDataSource runat="server" ID="SqlDataSourceGridView2" ConnectionString='<%$ ConnectionStrings:SCESPORTALConnectionString %>' DeleteCommand="DELETE FROM [Vendor_Contact] WHERE [vendor_contact_id] = @vendor_contact_id" InsertCommand="INSERT INTO [Vendor_Contact] ([vendor_id], [vendor_contact_honorific], [vendor_contact_fname], [vendor_contact_lname], [vendor_contact_position], [vendor_contact_address1], [vendor_contact_address2], [vendor_contact_city], [vendor_contact_state], [vendor_contact_postalcode], [vendor_contact_phone1], [vendor_contact_phone2], [vendor_contact_fax], [vendor_contact_email], [vendor_contact_note], [active]) VALUES (@vendor_id, @vendor_contact_honorific, @vendor_contact_fname, @vendor_contact_lname, @vendor_contact_position, @vendor_contact_address1, @vendor_contact_address2, @vendor_contact_city, @vendor_contact_state, @vendor_contact_postalcode, @vendor_contact_phone1, @vendor_contact_phone2, @vendor_contact_fax, @vendor_contact_email, @vendor_contact_note, @active)" SelectCommand="SELECT * FROM [Vendor_Contact] WHERE ([vendor_id] = @vendor_id) ORDER BY [vendor_contact_fname]" UpdateCommand="UPDATE [Vendor_Contact] SET [vendor_id] = @vendor_id, [vendor_contact_honorific] = @vendor_contact_honorific, [vendor_contact_fname] = @vendor_contact_fname, [vendor_contact_lname] = @vendor_contact_lname, [vendor_contact_position] = @vendor_contact_position, [vendor_contact_address1] = @vendor_contact_address1, [vendor_contact_address2] = @vendor_contact_address2, [vendor_contact_city] = @vendor_contact_city, [vendor_contact_state] = @vendor_contact_state, [vendor_contact_postalcode] = @vendor_contact_postalcode, [vendor_contact_phone1] = @vendor_contact_phone1, [vendor_contact_phone2] = @vendor_contact_phone2, [vendor_contact_fax] = @vendor_contact_fax, [vendor_contact_email] = @vendor_contact_email, [vendor_contact_note] = @vendor_contact_note, [active] = @active WHERE [vendor_contact_id] = @vendor_contact_id">
                 <DeleteParameters>
                     <asp:Parameter Name="vendor_contact_id" Type="Int32"></asp:Parameter>
